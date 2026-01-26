@@ -165,3 +165,87 @@ p {
     border-color: rgba(122, 11, 19, 0.7);
     opacity: 0.9;
 }
+/*----------------------------- Hero / Average -------------------------*/
+.hero {
+    position: relative;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='320'%3E%3Crect width='100%25' height='100%25' fill='none'/%3E%3Cg fill='white' fill-opacity='0.14' font-family='Archivo Black, Space Grotesk, sans-serif' font-size='36' font-weight='800'%3E%3Ctext x='60' y='70'%3EAVG%3C/text%3E%3Ctext x='320' y='45'%3EAVG%3C/text%3E%3Ctext x='620' y='95'%3EAVG%3C/text%3E%3Ctext x='140' y='200'%3EAVG%3C/text%3E%3Ctext x='480' y='250'%3EAVG%3C/text%3E%3Ctext x='760' y='185'%3EAVG%3C/text%3E%3C/g%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 900px 320px;
+    pointer-events: none;
+    opacity: 0.35;
+    z-index: 0;
+}
+
+.hero-inner {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 32px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    justify-content: center;
+    padding-left: 7cm;
+    padding-right: 0;
+}
+
+.hero-panel {
+    position: relative;
+    padding: 12px 0;
+    color: var(--white);
+}
+
+
+.hero-value {
+    margin: 0;
+    position: relative;
+    z-index: 1;
+    font-family: "Archivo Black", "Space Grotesk", sans-serif;
+    letter-spacing: 2px;
+    display: flex;
+    align-items: flex-end;
+    gap: 0;
+    text-shadow: 0 10px 22px rgba(0, 0, 0, 0.28), 0 2px 6px rgba(0, 0, 0, 0.22);
+}
+
+.hero-big {
+    font-size: clamp(120px, 18vw, 280px);
+    line-height: 0.9;
+}
+
+.hero-small {
+    font-size: clamp(48px, 7vw, 110px);
+    line-height: 0.95;
+    opacity: 0.95;
+    margin-left: -6px;
+    transform: translateY(-6px) skewX(-8deg);
+}
+
+.hero-text h2 {
+    margin: 0 0 10px;
+    font-size: clamp(28px, 4vw, 42px);
+}
+
+.hero-text {
+    font-size: 14px;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    max-width: 360px;
+    justify-self: auto;
+}
+
+.hero-text p,
+.hero-text h2 {
+    text-shadow: 0 6px 14px rgba(0, 0, 0, 0.22);
+}
+
+.hero-text p {
+    margin: 0;
+    line-height: 1.6;
+}
