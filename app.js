@@ -161,3 +161,74 @@ studentForm.addEventListener("submit", (e) => {
   studentForm.reset();
   nameInput.focus();
 });
+
+
+/*----------------------------- Users: Fetch + Map + Click Details -------------------------*/
+const renderUsers = () => {
+  usersContainer.innerHTML = "";
+
+  if (usersById.size === 0) {
+    usersContainer.innerHTML = `<p class="muted">No users loaded yet.</p>`;
+    userCountEl.textContent = "0";
+    return;
+  }
+
+  userCountEl.textContent = String(usersById.size);
+
+  // Display usernames and button click
+  // Map keeps insertion order (handy for UI)
+  for (const [id, user] of usersById.entries()) {
+    const btn = document.createElement("button");
+    btn.className = "user-btn";
+    btn.type = "button";
+    btn.textContent = `@${user.username}`;
+    //(#B1: Allow click-to-view details)
+    btn.addEventListener("click", () => showUserDetails(id));
+    usersContainer.appendChild(btn);
+  }
+};
+
+const showUserDetails = (id) => {
+  const user = usersById.get(id);
+  if (!user) return;
+
+  // Destructuring
+  const { name, username, email, phone, website, company, address } = user;
+
+  userDetails.innerHTML = `
+    <div class="item">
+      <span><strong>${name}</strong></span>
+      <span class="badge">ID: ${id}</span>
+    </div>
+
+    <p><strong>Username:</strong> @${username}</p>
+    <p><strong>Email:</strong> ${email}</p>
+    <p><strong>Phone:</strong> ${phone}</p>
+    <p><strong>Website:</strong> ${website}</p>
+
+    <div class="divider"></div>
+
+    <p><strong>Company:</strong> ${company?.name ?? "-"}</p>
+    <p><strong>City:</strong> ${address?.city ?? "-"}</p>
+  `;
+};
+
+const fetchUsers = async () => {
+  try {
+    //(#R5: Fetch additional user data)
+    const res = await fetch("https://jsonplaceholder.typicode.com/users");
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
+    const data = await res.json();
+
+    // Build Map by ID (#B1: Use a Map to store users by their ID)
+    usersById.clear();
+    data.forEach((u) => usersById.set(u.id, u));
+
+    renderUsers();
+  } catch (err) {
+    usersContainer.innerHTML = `<p class="muted">Failed to load users.</p>`;
+    userCountEl.textContent = "0";
+    userDetails.innerHTML = `<p class="muted">Error: ${err.message}</p>`;
+  }
+};
