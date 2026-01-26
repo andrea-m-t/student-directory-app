@@ -7,3 +7,138 @@
     <title>Student Directory</title>
     <link rel="stylesheet" href="style.css" />
 </head>
+<body>
+    <!-- Header: branding and navigation -->
+    <header class="site-header section-red section-red-dark" id="header">
+        <div class="container header-inner">
+            <div class="brand">
+                <div>
+                    <h1>Student Directory</h1>
+                    <p class="subtitle">Scores &amp; stats</p>
+                </div>
+            </div>
+
+            <nav class="nav">
+                <a href="#add-student">Add Student</a>
+                <a href="#students">Grades</a>
+                <a href="#users">Users API</a>
+            </nav>
+        </div>
+    </header>
+<!-- Average (#R6: shown above main content) -->
+<h1 id="avgGradeTop">Average Grade: 0</h1>
+<!-- Main: content wrapper -->
+<main>
+    <!-- Hero/Section 1: headline metrics -->
+    <section id="hero" class="section section-red hero">
+        <div class="container hero-inner">
+            <div class="hero-panel">
+                <div class="hero-value">
+                    <span id="avgValue" class="hero-big">70</span>
+                    <span class="hero-small">/100</span>
+                </div>
+            </div>
+            <div class="hero-text">
+                <p>Current students</p>
+                <h2 id="avgGrade">Average Grade</h2>
+            </div>
+        </div>
+    </section>
+<!--Section 2: Form to add a new student (#R1: student’s name and grade)-->
+<section id="add-student" class="section section-white">
+    <div class="container">
+        <div class="section-header">
+            <h2> Add Student</h2>
+            <p>Register new students and their grades.
+                <br>
+                Grades must be between 0 and 100, and names can not be repeated.
+            </p>
+        </div>
+
+        <div class="card">
+            <form id="studentForm" autocomplete="off">
+                <label>
+                    Student Name
+                    <input id="studentName" name="studentName" type="text" placeholder="e.g., Andrea Moreno" required
+                        minlength="2" />
+                </label>
+
+                <label>
+                    Grade (0 - 100)
+                    <input id="studentGrade" name="studentGrade" type="number" placeholder="e.g., 85" required min="0"
+                        max="100" />
+                </label>
+
+                <div class="row">
+                    <!-- (#R4: add a Save button)-->
+                    <button type="submit" class="btn">Save</button>
+                </div>
+
+                <p id="formMsg" class="msg" aria-live="polite"></p>
+            </form>
+        </div>
+    </div>
+</section>
+<!-- Section 3: Students list -->
+<section id="students" class="section section-red">
+    <div class="container">
+        <div class="section-header">
+            <h2>Grades</h2>
+            <p>Review the full list and total count of students.</p>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h3>Students</h3>
+                <span class="total-label">Total:</span>
+                <span id="studentCount" class="badge">0</span>
+            </div>
+            <!--(#R2:Display each entry dynamically in a styled <div> inside <main>.)-->
+            <div id="studentsContainer" class="list" aria-live="polite"></div>
+        </div>
+    </div>
+</section>
+    <!-- Section 4: External users loaded from API -->
+    <section id="users" class="section section-white">
+        <div class="container">
+            <div class="section-header">
+                <h2>Users from API</h2>
+                <p>Review external users and check their details.</p>
+            </div>
+    
+            <div class="card">
+                <div class="card-header">
+                    <h3>List</h3>
+                    <span class="total-label">Total:</span>
+                    <span id="userCount" class="badge">0</span>
+                </div>
+    
+                <p class="small">
+                    Click a username to view details.
+                </p>
+    
+                <div id="usersContainer" class="list"></div>
+    
+                <div class="divider"></div>
+    
+                <h3>User Details</h3>
+                <div id="userDetails" class="details">
+                    <p class="muted">Select a user to see details.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    </main>
+    <!-- Footer - credits -->
+    <footer id="footer" class="section section-red">
+        <div class="container footer-inner">
+            <p>Student Directory App - Assignment M 4.1 - Andrea Maslucan Moreno - 2026 </p>
+        </div>
+    </footer>
+    <!-- Visual feedback (#B2: confirmation when saving)-->
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <script src="app.js"></script>
+    
+    </body>
+    
+    </html>
