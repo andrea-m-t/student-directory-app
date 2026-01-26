@@ -431,3 +431,56 @@ input:focus {
     padding: 12px;
     background: rgba(225, 29, 47, 0.08);
 }
+/*----------------------------- Footer -------------------------*/
+.footer-inner {
+    text-align: center;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.78);
+}
+
+#footer.section {
+    padding: 6px 0;
+}
+/*--------------------- Confirmation message -------------------*/
+.toast {
+    position: fixed;
+    left: 50%;
+    bottom: 18px;
+    transform: translateX(-50%);
+    min-width: min(520px, 90vw);
+    padding: 12px 14px;
+    border-radius: 14px;
+    border: 1px solid rgba(225, 29, 47, 0.4);
+    background: var(--white);
+    color: var(--ink);
+    box-shadow: var(--shadow);
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* (#B2:Add visual feedback when saving) */
+.toast.show {
+    animation: pop 1.6s ease forwards;
+}
+
+/* Toast animation */
+@keyframes pop {
+    0% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(10px) scale(0.98);
+    }
+
+    12% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0) scale(1);
+    }
+
+    80% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(6px) scale(0.995);
+    }
+}
