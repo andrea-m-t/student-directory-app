@@ -1,0 +1,1 @@
+ "use strict"; //Enables strict mode to catch common JS mistakes
