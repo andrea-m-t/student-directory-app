@@ -484,3 +484,22 @@ input:focus {
         transform: translateX(-50%) translateY(6px) scale(0.995);
     }
 }
+/*--------------------- Responsive -------------------*/
+@media (max-width: 900px) {
+    .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav {
+        justify-content: flex-start;
+    }
+
+    .hero-inner {
+        grid-template-columns: 1fr;
+    }
+
+    #avgGradeTop {
+        padding: 14px 24px;
+    }
+}
