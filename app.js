@@ -232,3 +232,10 @@ const fetchUsers = async () => {
     userDetails.innerHTML = `<p class="muted">Error: ${err.message}</p>`;
   }
 };
+
+/*----------------------------- Init -------------------------*/
+(() => {
+  loadFromLocalStorage();
+  renderStudents();
+  fetchUsers();
+})();
