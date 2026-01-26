@@ -32,6 +32,8 @@ const usersById = new Map(); // Map<id, user>
 
 /*----------------------------- Helpers -------------------------*/
 const normalizeName = (name) => name.trim().toLowerCase();
+const NAME_REGEX = /^[\p{L}\s]+$/u;
+const NAME_ERROR = "Name can contain letters and spaces only.";
 
 const showMessage = (text, type = "ok") => {
   formMsg.textContent = text;
@@ -42,6 +44,24 @@ const showMessage = (text, type = "ok") => {
 const clearMessage = () => {
   formMsg.textContent = "";
   formMsg.classList.remove("ok", "err");
+};
+
+const updateNameValidation = () => {
+  const value = nameInput.value;
+  if (!value) {
+    nameInput.setCustomValidity("");
+    clearMessage();
+    return;
+  }
+
+  if (!NAME_REGEX.test(value)) {
+    nameInput.setCustomValidity(NAME_ERROR);
+    showMessage(NAME_ERROR, "err");
+    return;
+  }
+
+  nameInput.setCustomValidity("");
+  clearMessage();
 };
 
 const showToast = (text) => {
@@ -135,6 +155,11 @@ studentForm.addEventListener("submit", (e) => {
     return;
   }
 
+  if (!NAME_REGEX.test(name)) {
+    showMessage(NAME_ERROR, "err");
+    return;
+  }
+
   if (grade < 0 || grade > 100) {
     showMessage("Grade must be between 0 and 100.", "err");
     return;
@@ -161,6 +186,8 @@ studentForm.addEventListener("submit", (e) => {
   studentForm.reset();
   nameInput.focus();
 });
+
+nameInput.addEventListener("input", updateNameValidation);
 
 
 /*----------------------------- Users: Fetch + Map + Click Details -------------------------*/

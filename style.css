@@ -376,6 +376,27 @@ input:focus {
     color: var(--ink-soft);
 }
 
+.msg.err {
+    margin-top: 12px;
+    padding: 10px 12px;
+    border-radius: 12px;
+    background: var(--red-100);
+    border: 1px solid var(--red-500);
+    color: var(--red-700);
+    font-weight: 600;
+    box-shadow: 0 10px 20px rgba(225, 29, 47, 0.18);
+}
+
+.msg.ok {
+    margin-top: 12px;
+    padding: 8px 12px;
+    border-radius: 12px;
+    background: rgba(225, 29, 47, 0.08);
+    border: 1px solid rgba(122, 11, 19, 0.15);
+    color: var(--ink);
+    font-weight: 600;
+}
+
 .list {
     display: grid;
     gap: 10px;
