@@ -27,3 +27,96 @@ let students = []; // [{ name, grade }]
 const studentNameSet = new Set(); // (#R3: prevent duplicates) --> normalized names 
 
 const usersById = new Map(); // Map<id, user>
+
+
+
+/*----------------------------- Helpers -------------------------*/
+const normalizeName = (name) => name.trim().toLowerCase();
+
+const showMessage = (text, type = "ok") => {
+  formMsg.textContent = text;
+  formMsg.classList.remove("ok", "err");
+  formMsg.classList.add(type === "err" ? "err" : "ok");
+};
+
+const clearMessage = () => {
+  formMsg.textContent = "";
+  formMsg.classList.remove("ok", "err");
+};
+
+const showToast = (text) => {
+  toast.textContent = text;
+  toast.classList.remove("show"); // reset animation
+  // force reflow so the animation restarts
+  void toast.offsetWidth;
+  toast.classList.add("show");
+};
+
+const calculateAverage = (arr) => {
+  if (arr.length === 0) return null;
+  const total = arr.reduce((sum, s) => sum + s.grade, 0);
+  return total / arr.length;
+};
+
+const updateAverageUI = () => {
+  const avg = calculateAverage(students);
+  avgGradeEl.textContent = "Average Grade";
+  if (!avgValueEl) return;
+
+  const avgText = avg === null ? "0" : String(Math.round(avg));
+  avgValueEl.textContent = avgText;
+  if (avgGradeTopEl) {
+    avgGradeTopEl.textContent = `Average Grade: ${avgText}`;
+  }
+};
+
+const renderStudents = () => {
+  studentsContainer.innerHTML = "";
+
+  if (students.length === 0) {
+    studentsContainer.innerHTML = `<p class="muted">No students yet. Add the first one!</p>`;
+    studentCountEl.textContent = "0";
+    updateAverageUI();
+    return;
+  }
+
+  const fragment = document.createDocumentFragment();
+
+  students.forEach(({ name, grade }) => {
+    const div = document.createElement("div");
+    div.className = "item";
+    div.innerHTML = `
+      <span><strong>${name}</strong></span>
+      <span class="badge">${grade}</span>
+    `;
+    fragment.appendChild(div);
+  });
+
+  studentsContainer.appendChild(fragment);
+  studentCountEl.textContent = String(students.length);
+  updateAverageUI();
+};
+
+const saveToLocalStorage = () => {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(students));
+};
+
+const loadFromLocalStorage = () => {
+  const raw = localStorage.getItem(STORAGE_KEY);
+  if (!raw) return;
+
+  try {
+    const parsed = JSON.parse(raw);
+    if (!Array.isArray(parsed)) return;
+
+    // rebuild Set + data
+    students = parsed
+      .filter((s) => s && typeof s.name === "string" && typeof s.grade === "number")
+      .map((s) => ({ name: s.name, grade: s.grade }));
+
+    studentNameSet.clear();
+    students.forEach((s) => studentNameSet.add(normalizeName(s.name)));
+  } catch {
+    // If corrupted, ignore
+  }
+};
