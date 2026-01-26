@@ -407,3 +407,27 @@ input:focus {
     background: rgba(122, 11, 19, 0.2);
     margin: 14px 0;
 }
+/*----------------------------- Users (API) -------------------------*/
+.user-btn {
+    width: 100%;
+    text-align: left;
+    background: var(--red-100);
+    border: 1px solid rgba(122, 11, 19, 0.12);
+    color: var(--ink);
+    border-radius: 14px;
+    padding: 10px 12px;
+    cursor: pointer;
+    transition: transform 160ms ease, border-color 160ms ease;
+}
+
+.user-btn:hover {
+    transform: translateY(-1px);
+    border-color: var(--red-500);
+}
+
+.details {
+    border: 1px dashed rgba(122, 11, 19, 0.35);
+    border-radius: 14px;
+    padding: 12px;
+    background: rgba(225, 29, 47, 0.08);
+}
