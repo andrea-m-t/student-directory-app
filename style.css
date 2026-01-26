@@ -60,3 +60,108 @@ p {
 .section {
     padding: 64px 0;
 }
+/*----------------------------- Section Themes -------------------------*/
+.section-red {
+    background: linear-gradient(135deg, var(--red-700), var(--red-900));
+    color: var(--white);
+}
+
+.section-red-dark {
+    background: linear-gradient(135deg, var(--red-800), var(--red-900));
+}
+
+.section-white {
+    background: var(--white);
+    color: var(--ink);
+}
+
+
+/*----------------------------- Header & Navigation -------------------------*/
+.site-header {
+    padding: 6px 0;
+    border-bottom: none;
+}
+
+.site-header .container {
+    width: 100%;
+    max-width: none;
+    padding-left: 2.5cm;
+    padding-right: 2.5cm;
+}
+
+.header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.brand-mark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    border-radius: 12px;
+    background: var(--white);
+    color: var(--red-700);
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.site-header h1 {
+    margin: 0;
+    margin-top: 3mm;
+    font-size: 20px;
+    text-shadow: 0 6px 14px rgba(0, 0, 0, 0.22);
+}
+
+#avgGradeTop {
+    margin: 0;
+    padding: 10px 2.5cm;
+    background:
+        linear-gradient(90deg, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.0)),
+        linear-gradient(135deg, var(--red-700), var(--red-900));
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 9px;
+    font-weight: 400;
+    font-family: "Space Grotesk", "Segoe UI", Tahoma, sans-serif;
+    text-align: left;
+    text-shadow: none;
+}
+
+.subtitle {
+    margin: 4px 0 0;
+    color: var(--ink-soft);
+    font-size: 13px;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.nav {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    margin-top: 3mm;
+}
+
+.nav a {
+    color: var(--ink);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    padding-bottom: 4px;
+    border-bottom: 2px solid transparent;
+    transition: border-color 160ms ease, opacity 160ms ease;
+}
+
+.nav a:hover {
+    border-color: rgba(122, 11, 19, 0.7);
+    opacity: 0.9;
+}
