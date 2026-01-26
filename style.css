@@ -47,3 +47,16 @@ h3 {
 p {
     line-height: 1.6;
 }
+/*----------------------------- Layout Helpers -------------------------*/
+.container {
+    width: 100%;
+    max-width: none;
+    margin: 0 auto;
+    padding-left: 2.5cm;
+    padding-right: 2.5cm;
+}
+
+/*----------------------------- Section Spacing -------------------------*/
+.section {
+    padding: 64px 0;
+}
