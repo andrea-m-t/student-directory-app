@@ -12,3 +12,11 @@
     --ink-soft: rgba(42, 12, 16, 0.72);
     --shadow: 0 16px 40px rgba(122, 11, 19, 0.25);
 }
+/*----------------------------- Base / Reset -------------------------*/
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
