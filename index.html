@@ -44,3 +44,38 @@
             </div>
         </div>
     </section>
+<!--Section 2: Form to add a new student (#R1: student’s name and grade)-->
+<section id="add-student" class="section section-white">
+    <div class="container">
+        <div class="section-header">
+            <h2> Add Student</h2>
+            <p>Register new students and their grades.
+                <br>
+                Grades must be between 0 and 100, and names can not be repeated.
+            </p>
+        </div>
+
+        <div class="card">
+            <form id="studentForm" autocomplete="off">
+                <label>
+                    Student Name
+                    <input id="studentName" name="studentName" type="text" placeholder="e.g., Andrea Moreno" required
+                        minlength="2" />
+                </label>
+
+                <label>
+                    Grade (0 - 100)
+                    <input id="studentGrade" name="studentGrade" type="number" placeholder="e.g., 85" required min="0"
+                        max="100" />
+                </label>
+
+                <div class="row">
+                    <!-- (#R4: add a Save button)-->
+                    <button type="submit" class="btn">Save</button>
+                </div>
+
+                <p id="formMsg" class="msg" aria-live="polite"></p>
+            </form>
+        </div>
+    </div>
+</section>
