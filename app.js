@@ -120,3 +120,44 @@ const loadFromLocalStorage = () => {
     // If corrupted, ignore
   }
 };
+
+
+/*----------------------------- Students: Events -------------------------*/
+studentForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  clearMessage();
+
+  const name = nameInput.value.trim();
+  const grade = Number(gradeInput.value);
+
+  if (!name || Number.isNaN(grade)) {
+    showMessage("Please enter a valid name and grade.", "err");
+    return;
+  }
+
+  if (grade < 0 || grade > 100) {
+    showMessage("Grade must be between 0 and 100.", "err");
+    return;
+  }
+
+  const key = normalizeName(name);
+  if (studentNameSet.has(key)) {
+    showMessage("Duplicate prevented! This student already exists.", "err");
+    return;
+  }
+
+  // Add to data + Set
+  studentNameSet.add(key);
+  students.push({ name, grade });
+
+  renderStudents();
+  showMessage(`Added: ${name} (${grade})`, "ok");
+  saveToLocalStorage();
+
+  // (#B2:Add visual feedback when saving)
+  showToast(`Saved ${students.length} student(s) to localStorage.`);
+
+  // Reset inputs
+  studentForm.reset();
+  nameInput.focus();
+});
