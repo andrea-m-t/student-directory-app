@@ -12,11 +12,38 @@
     --ink-soft: rgba(42, 12, 16, 0.72);
     --shadow: 0 16px 40px rgba(122, 11, 19, 0.25);
 }
+
 /*----------------------------- Base / Reset -------------------------*/
 * {
-    box-sizing: border-box;
+box-sizing: border-box;
 }
 
 html {
-    scroll-behavior: smooth;
+scroll-behavior: smooth;
+}
+/*----------------------------- Fonts -------------------------*/
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+
+
+/*----------------------------- Body & Typography -------------------------*/
+body {
+    margin: 0;
+    padding-left: 0;
+    padding-right: 0;
+    font-family: "Space Grotesk", "Segoe UI", Tahoma, sans-serif;
+    color: var(--ink);
+    background: var(--white);
+    min-height: 100vh;
+}
+
+h1,
+h2,
+h3 {
+    font-family: "Archivo Black", "Space Grotesk", sans-serif;
+    letter-spacing: 0.5px;
+}
+
+p {
+    line-height: 1.6;
 }
